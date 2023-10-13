@@ -8,7 +8,7 @@ Pet Space is a pet adoption tool to link users to multiple rescue organizations 
 ## User Story
 ```
 AS A potential pet parent searching for the perfect pet,
-I WANT to be able to search by animal breed, age, size, and location.
+I WANT to be able to search by animal type, age, size, and location.
 SO THAT I can find my dream pet!
 ```
 
@@ -34,7 +34,8 @@ Create a sample template of the layout of the browser- where to put info where, 
 Create a photo layout, swipe option- connect PhotoSwipe api
 -Inquiry form data- go to dummy email
 Create local storage to save pets of interest
-Learn bootstrap
+Learn bootstrap, utilize "popper bundle"
+Create html for about us and contact us to open new page 
 
 
 
