@@ -1,8 +1,24 @@
+// Global Variables
 console.log("Testing Petfinder API...");
-
 var testApiSectionEl = $(".test-api-section");
-
 var bearerToken = "";
+
+// Search parameters
+//      Type of animal
+//      Age of animal baby, young, adult, senior Accepts multiple values, e.g. age=baby,senior.
+//      Size of animal small, medium, large, xlarge Accepts multiple values, e.g. size=large,xlarge.
+//      City, State, Zip
+//      Distance-from
+
+var queryType = "dog";
+var queryAge = "";
+var querySize = "";
+var queryCityFrom = "";
+var queryDistanceFrom = "";
+
+
+
+
 
 
 // Handshake with Petfinder API
@@ -28,7 +44,7 @@ fetch("https://api.petfinder.com/v2/oauth2/token", {
 
 
 function fetchAnimals() {
-    fetch("https://api.petfinder.com/v2/animals?type=dog&page=2", {
+    fetch("https://api.petfinder.com/v2/animals", {
         headers: {
         "Authorization": `Bearer ${bearerToken}`,
         "Content-Type": "application/json"
