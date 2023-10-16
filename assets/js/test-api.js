@@ -1,5 +1,7 @@
 console.log("Testing Petfinder API...");
 
+var testApiSectionEl = $(".test-api-section");
+
 var bearerToken = "";
 
 
