@@ -130,7 +130,7 @@
     </main>
 
     <!-- This is for finding your fur friend -->
-   
+
     <div
       class="modal fade"
       id="new-project-modal"
@@ -143,7 +143,7 @@
           <form id="project-form">
             <div class="modal-header custom-modal-header">
               <h5 class="modal-title" id="new-project-modal-label">
-                Add a new project
+                Find Your "Fur-ever" Friend
               </h5>
               <button
                 type="button"
@@ -154,7 +154,34 @@
             </div>
             <div class="modal-body">
               <div class="mb-3">
-                <label for="project-name-input">Project Name</label>
+                <label for="project-type-input" class="form-label"
+                  >Animal Type</label
+                >
+                <select id="project-type-input" class="form-select">
+                  <option value="cat">Cat</option>
+                  <option value="dog">Dog</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="project-type-input" class="form-label">Age</label>
+                <select id="project-type-input" class="form-select">
+                  <option value="baby">Baby</option>
+                  <option value="young">Young</option>
+                  <option value="adult">Adult</option>
+                  <option value="senior">Senior</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="project-type-input" class="form-label">Size</label>
+                <select id="project-type-input" class="form-select">
+                  <option value="small">Small</option>
+                  <option value="medium">Medium</option>
+                  <option value="large">Large</option>
+                  <option value="xlarge">X-Large</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="project-name-input">Location</label>
                 <input
                   type="text"
                   id="project-name-input"
@@ -165,7 +192,7 @@
               </div>
               <div class="mb-3">
                 <label for="project-type-input" class="form-label"
-                  >Project Type</label
+                  >Distance</label
                 >
                 <select id="project-type-input" class="form-select">
                   <option value="Web Application (Front End)">
@@ -184,15 +211,6 @@
                   </option>
                 </select>
               </div>
-              <div class="mb-3">
-                <label for="project-date-input">Due Date</label>
-                <input
-                  type="date"
-                  id="project-date-input"
-                  class="form-control"
-                  required
-                />
-              </div>
             </div>
             <div class="modal-footer">
               <!--
@@ -208,10 +226,10 @@
               </button>
               <button
                 type="submit"
-                class="btn btn-custom"
+                class="btn btn-primary"
                 data-bs-dismiss="modal"
               >
-                Add Project
+                Find Fur-Ever Pet
               </button>
             </div>
           </form>
