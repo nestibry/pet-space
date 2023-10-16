@@ -2,6 +2,7 @@
 console.log("Testing Petfinder API...");
 var testApiSectionEl = $(".test-api-section");
 var bearerToken = "";
+var animialData = [];
 
 // Search parameters
 //      Type of animal
@@ -13,12 +14,13 @@ var bearerToken = "";
 var queryType = "dog";
 var queryAge = "";
 var querySize = "";
-var queryCityFrom = "";
-var queryDistanceFrom = "";
+var queryLocation = "";
+var queryDistance = "";
 
+var queryString = `type=${queryType}&age=${queryAge}&size=${querySize}`;
 
-
-
+if(queryLocation !== ""){ queryString += `&location=${queryLocation}`;}
+if(queryDistance !== ""){ queryString += `&distance=${queryDistance}`;}
 
 
 // Handshake with Petfinder API
@@ -44,13 +46,36 @@ fetch("https://api.petfinder.com/v2/oauth2/token", {
 
 
 function fetchAnimals() {
-    fetch("https://api.petfinder.com/v2/animals", {
+    fetch(`https://api.petfinder.com/v2/animals?${queryString}`, {
         headers: {
         "Authorization": `Bearer ${bearerToken}`,
         "Content-Type": "application/json"
         }
     })
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => {
+        console.log(data);
+        animialData = data;
+
+        renderAnimalData();
+
+    })
     .catch(error => console.error(error));
+}
+
+function renderAnimalData() {
+
+    // Clear the testApiSection to get ready for the new rendering
+    for(var j = (testApiSectionEl.children().length - 1); j > 0; j--) {
+        testApiSectionEl.children().eq(j).remove();
+    }
+
+    
+    for(var i = 0; i < animialData.animals.length; i++){
+        var nameEl = $('<h3>');
+        nameEl.text(animialData.animals[i].name);
+        testApiSectionEl.append(nameEl);
+    }
+    
+
 }
