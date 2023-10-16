@@ -64,6 +64,7 @@ function fetchAnimals() {
 }
 
 function renderAnimalData() {
+    var testApiSectionEl = $(".test-api-section");
 
     // Clear the testApiSection to get ready for the new rendering
     for(var j = (testApiSectionEl.children().length - 1); j > 0; j--) {
@@ -76,6 +77,7 @@ function renderAnimalData() {
         nameEl.text(animialData.animals[i].name);
         testApiSectionEl.append(nameEl);
     }
+
     
 
 }
