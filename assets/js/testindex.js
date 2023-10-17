@@ -12,6 +12,8 @@ var animalData = [];
 //      City, State, Zip
 //      Distance-from
 
+
+// Query String
 var queryType = "dog";
 var queryAge = "";
 var querySize = "";
@@ -155,4 +157,17 @@ petFinderFormEl.on("submit", function(event){
     event.stopPropagation();
     console.log("Submitted Petfinder Form");
 
+    // Get the user's inputs and add to Query String
+    var queryType = $('#animal-type-input').val();
+    var queryAge = $('#animal-age-input').val();
+    var querySize = $('#animal-size-input').val();
+    var queryLocation = $('#animal-location-input').val();
+    var queryDistance = $('#animal-distance-input').val();
+
+    queryString = `type=${queryType}&age=${queryAge}&size=${querySize}`;
+
+    if (queryLocation !== "") { queryString += `&location=${queryLocation}`; }
+    if (queryDistance !== "") { queryString += `&distance=${queryDistance}`; }
+    console.log(`Query String: ${queryString}`);
+    
 });
