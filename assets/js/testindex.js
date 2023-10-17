@@ -168,9 +168,12 @@ petFinderFormEl.on("submit", function(event){
 
     queryString = `type=${queryType}&age=${queryAge}&size=${querySize}`;
     
-    // If Location is entered, combine the location and distance selected to query
-    if (queryLocation !== "") { queryString += `&location=${queryLocation}&distance=${queryDistance}`; }
-    
+    // If Location is entered, combine the location and distance selected to query  
+    // Making sure the user only enter a Postal Code of lenghth 5 digits
+    if( !isNaN(parseInt($('#animal-location-input').val())) && ($('#animal-location-input').val().length == 5)){
+        queryString += `&location=${queryLocation}&distance=${queryDistance}`;
+    }
+
     console.log(`Query String: ${queryString}`);
 
 
