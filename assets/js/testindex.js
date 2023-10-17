@@ -3,6 +3,7 @@
 // var testApiSectionEl = $(".test-api-section");
 var bearerToken = "";
 var animalData = [];
+var petFinderFormEl = $('#pet-finder-form');
 
 // Search parameters
 //      Type of animal
@@ -144,7 +145,4 @@ function renderAnimalData() {
     animalCardEl.append(animalRowEl);
     animalListEl.append(animalCardEl);
   }
-
-
-
 }
