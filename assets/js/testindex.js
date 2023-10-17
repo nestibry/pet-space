@@ -2,7 +2,7 @@
 // console.log("Testing Petfinder API...");
 // var testApiSectionEl = $(".test-api-section");
 var bearerToken = "";
-var animialData = [];
+var animalData = [];
 
 // Search parameters
 //      Type of animal
@@ -55,7 +55,7 @@ function fetchAnimals() {
     .then(response => response.json())
     .then(data => {
       console.log(data);
-      animialData = data;
+      animalData = data;
 
 
       renderAnimalData();
@@ -74,7 +74,7 @@ function renderAnimalData() {
   console.log("made it to render animal data");
 
   // Creating each animal card
-  for (var i = 0; i < animialData.animals.length; i++) {
+  for (var i = 0; i < animalData.animals.length; i++) {
 
     var animalCardEl = $('<div>');
     animalCardEl.addClass("card row justify-content-center mx-auto animal-card");
@@ -85,8 +85,16 @@ function renderAnimalData() {
     var imgSection = $('<div>');
     imgSection.addClass("col-md-4");
     var imgEl = $('<img>');
-    imgEl.addClass("img-fluid rounded-start");
-    imgEl.attr('src', '../images/dog example.jpeg');
+    imgEl.addClass("img-fluid rounded-start")
+
+    if (animalData.animals[i].photos.length === 0) {
+
+      imgEl.attr('src', "../images/dogexample.jpeg");
+    }
+    else {
+      imgEl.attr('src', animalData.animals[i].photos[0].medium)
+    }
+
 
     var animalBioEl = $('<div>');
     animalBioEl.addClass("col-md-8");
@@ -96,38 +104,44 @@ function renderAnimalData() {
 
     var cardTitleEl = $('<h5>');
     cardTitleEl.addClass("card-title");
-    cardTitleEl.text(animialData.animals[i].name);
+    cardTitleEl.text(animalData.animals[i].name);
 
     var cardTextEl = $('<p>');
     cardTextEl.addClass("card-text");
-    cardTextEl.text(animialData.animals[i].description);
+    cardTextEl.text(animalData.animals[i].description);
 
     var animalAgeEl = $('<li>');
-    animalAgeEl.text(animialData.animals[i].age);
+    animalAgeEl.text(animalData.animals[i].age);
     // animalAgeEl.addClass("li");
 
     var animalSizeEl = $('<li>');
-    animalSizeEl.text(animialData.animals[i].size);
+    animalSizeEl.text(animalData.animals[i].size);
     // animalSizeEl.addClass("col-md-8");
 
     var animalDistanceEl = $('<li>');
-    animalDistanceEl.text(animialData.animals[i].distance);
+    animalDistanceEl.text(animalData.animals[i].contact.distance);
     // animalDistanceEl.addClass("col-md-8");
 
     var animalUrlEl = $('<li>');
-    animalUrlEl.text(animialData.animals[i].url);
+    animalUrlEl.text(animalData.animals[i].url);
     // animalUrlEl.addClass("col-md-8");
 
 
     //Append everything togther
-    var nameEl = $('<h3>');
-    nameEl.text(animialData.animals[i].name);
+    cardBodyEl.append(cardTitleEl);
+    cardBodyEl.append(cardTextEl);
+    cardBodyEl.append(animalAgeEl);
+    cardBodyEl.append(animalSizeEl);
+    cardBodyEl.append(animalDistanceEl);
+    cardBodyEl.append(animalUrlEl);
+    animalBioEl.append(cardBodyEl);
 
 
+    imgSection.append(imgEl);
 
-
-
-    animalCardEl.append(nameEl);
+    animalRowEl.append(imgSection);
+    animalRowEl.append(animalBioEl);
+    animalCardEl.append(animalRowEl);
     animalListEl.append(animalCardEl);
   }
 
