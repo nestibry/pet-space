@@ -3,6 +3,7 @@
 // var testApiSectionEl = $(".test-api-section");
 var bearerToken = "";
 var animalData = [];
+// var petFinderFormEl = $('#pet-finder-form');
 
 // Search parameters
 //      Type of animal
@@ -11,6 +12,8 @@ var animalData = [];
 //      City, State, Zip
 //      Distance-from
 
+
+// Query String
 var queryType = "dog";
 var queryAge = "";
 var querySize = "";
@@ -24,6 +27,7 @@ if (queryDistance !== "") { queryString += `&distance=${queryDistance}`; }
 
 
 // Handshake with Petfinder API
+function searchPetfinderAPI(){
 fetch("https://api.petfinder.com/v2/oauth2/token", {
   body: JSON.stringify({
     grant_type: "client_credentials",
@@ -43,6 +47,7 @@ fetch("https://api.petfinder.com/v2/oauth2/token", {
     fetchAnimals();
   })
   .catch(error => console.error(error));
+}
 
 
 function fetchAnimals() {
@@ -89,7 +94,7 @@ function renderAnimalData() {
 
     if (animalData.animals[i].photos.length === 0) {
 
-      imgEl.attr('src', "../images/dogexample.jpeg");
+      imgEl.attr('src', "../images/photocomingsoon.png");
     }
     else {
       imgEl.attr('src', animalData.animals[i].photos[0].medium)
@@ -118,12 +123,16 @@ function renderAnimalData() {
     animalSizeEl.text(animalData.animals[i].size);
     // animalSizeEl.addClass("col-md-8");
 
-    var animalDistanceEl = $('<li>');
-    animalDistanceEl.text(animalData.animals[i].contact.distance);
+    // var animalDistanceEl = $('<li>');
+    // animalDistanceEl.text(animalData.animals[i].contact.distance);
     // animalDistanceEl.addClass("col-md-8");
 
     var animalUrlEl = $('<li>');
-    animalUrlEl.text(animalData.animals[i].url);
+    var urlLinkEl = $('<a>');
+    urlLinkEl.attr('href', animalData.animals[i].url);
+    urlLinkEl.text("Link to Animal in Petfinder");
+    animalUrlEl.append(urlLinkEl);
+    // animalUrlEl.text(animalData.animals[i].url);
     // animalUrlEl.addClass("col-md-8");
 
 
@@ -132,7 +141,7 @@ function renderAnimalData() {
     cardBodyEl.append(cardTextEl);
     cardBodyEl.append(animalAgeEl);
     cardBodyEl.append(animalSizeEl);
-    cardBodyEl.append(animalDistanceEl);
+    // cardBodyEl.append(animalDistanceEl);
     cardBodyEl.append(animalUrlEl);
     animalBioEl.append(cardBodyEl);
 
@@ -144,7 +153,34 @@ function renderAnimalData() {
     animalCardEl.append(animalRowEl);
     animalListEl.append(animalCardEl);
   }
-
-
-
 }
+
+var petFinderFormEl = $('#pet-finder-form');
+
+petFinderFormEl.on("submit", function(event){
+
+    event.preventDefault();
+    event.stopPropagation();
+    console.log("Submitted Petfinder Form");
+
+    // Get the user's inputs and add to Query String
+    var queryType = $('#animal-type-input').val();
+    var queryAge = $('#animal-age-input').val();
+    var querySize = $('#animal-size-input').val();
+    var queryLocation = $('#animal-location-input').val();
+    var queryDistance = $('#animal-distance-input').val();
+
+    queryString = `type=${queryType}&age=${queryAge}&size=${querySize}`;
+    
+    // If Location is entered, combine the location and distance selected to query  
+    // Making sure the user only enter a Postal Code of lenghth 5 digits
+    if( !isNaN(parseInt($('#animal-location-input').val())) && ($('#animal-location-input').val().length == 5)){
+        queryString += `&location=${queryLocation}&distance=${queryDistance}`;
+    }
+
+    console.log(`Query String: ${queryString}`);
+
+    searchPetfinderAPI();
+
+
+});
