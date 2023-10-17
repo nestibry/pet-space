@@ -65,18 +65,71 @@ function fetchAnimals() {
 }
 
 function renderAnimalData() {
-  var animalListEl = $(".animal-section");
+  var animalListEl = $(".animal-list");
+
+
 
   // Clear out old elements
   animalListEl.empty()
   console.log("made it to render animal data");
 
+  // Creating each animal card
+  for (var i = 0; i < animialData.animals.length; i++) {
 
-  // for (var i = 0; i < animialData.animals.length; i++) {
-  //   var nameEl = $('<h3>');
-  //   nameEl.text(animialData.animals[i].name);
-  //   animalListEl.append(nameEl);
-  // }
+    var animalCardEl = $('<div>');
+    animalCardEl.addClass("card row justify-content-center mx-auto animal-card");
+
+    var animalRowEl = $('<div>');
+    animalRowEl.addClass("row d-flex justify-content-center g-0");
+
+    var imgSection = $('<div>');
+    imgSection.addClass("col-md-4");
+    var imgEl = $('<img>');
+    imgEl.addClass("img-fluid rounded-start");
+    imgEl.attr('src', '../images/dog example.jpeg');
+
+    var animalBioEl = $('<div>');
+    animalBioEl.addClass("col-md-8");
+
+    var cardBodyEl = $('<div>');
+    cardBodyEl.addClass("card-body");
+
+    var cardTitleEl = $('<h5>');
+    cardTitleEl.addClass("card-title");
+    cardTitleEl.text(animialData.animals[i].name);
+
+    var cardTextEl = $('<p>');
+    cardTextEl.addClass("card-text");
+    cardTextEl.text(animialData.animals[i].description);
+
+    var animalAgeEl = $('<li>');
+    animalAgeEl.text(animialData.animals[i].age);
+    // animalAgeEl.addClass("li");
+
+    var animalSizeEl = $('<li>');
+    animalSizeEl.text(animialData.animals[i].size);
+    // animalSizeEl.addClass("col-md-8");
+
+    var animalDistanceEl = $('<li>');
+    animalDistanceEl.text(animialData.animals[i].distance);
+    // animalDistanceEl.addClass("col-md-8");
+
+    var animalUrlEl = $('<li>');
+    animalUrlEl.text(animialData.animals[i].url);
+    // animalUrlEl.addClass("col-md-8");
+
+
+    //Append everything togther
+    var nameEl = $('<h3>');
+    nameEl.text(animialData.animals[i].name);
+
+
+
+
+
+    animalCardEl.append(nameEl);
+    animalListEl.append(animalCardEl);
+  }
 
 
 
