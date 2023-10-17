@@ -1,6 +1,6 @@
 // Global Variables
-console.log("Testing Petfinder API...");
-var testApiSectionEl = $(".test-api-section");
+// console.log("Testing Petfinder API...");
+// var testApiSectionEl = $(".test-api-section");
 var bearerToken = "";
 var animialData = [];
 
@@ -57,6 +57,7 @@ function fetchAnimals() {
       console.log(data);
       animialData = data;
 
+
       renderAnimalData();
 
     })
@@ -64,19 +65,18 @@ function fetchAnimals() {
 }
 
 function renderAnimalData() {
-  var testApiSectionEl = $(".test-api-section");
+  var animalListEl = $(".animal-section");
 
-  // Clear the testApiSection to get ready for the new rendering
-  for (var j = (testApiSectionEl.children().length - 1); j > 0; j--) {
-    testApiSectionEl.children().eq(j).remove();
-  }
+  // Clear out old elements
+  animalListEl.empty()
+  console.log("made it to render animal data");
 
 
-  for (var i = 0; i < animialData.animals.length; i++) {
-    var nameEl = $('<h3>');
-    nameEl.text(animialData.animals[i].name);
-    testApiSectionEl.append(nameEl);
-  }
+  // for (var i = 0; i < animialData.animals.length; i++) {
+  //   var nameEl = $('<h3>');
+  //   nameEl.text(animialData.animals[i].name);
+  //   animalListEl.append(nameEl);
+  // }
 
 
 
