@@ -94,7 +94,7 @@ function renderAnimalData() {
 
     if (animalData.animals[i].photos.length === 0) {
 
-      imgEl.attr('src', "../images/dogexample.jpeg");
+      imgEl.attr('src', "../images/photocomingsoon.png");
     }
     else {
       imgEl.attr('src', animalData.animals[i].photos[0].medium)
