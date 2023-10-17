@@ -3,7 +3,7 @@
 // var testApiSectionEl = $(".test-api-section");
 var bearerToken = "";
 var animalData = [];
-var petFinderFormEl = $('#pet-finder-form');
+// var petFinderFormEl = $('#pet-finder-form');
 
 // Search parameters
 //      Type of animal
@@ -146,3 +146,13 @@ function renderAnimalData() {
     animalListEl.append(animalCardEl);
   }
 }
+
+var petFinderFormEl = $('#pet-finder-form');
+
+petFinderFormEl.on("submit", function(event){
+
+    event.preventDefault();
+    event.stopPropagation();
+    console.log("Submitted Petfinder Form");
+
+});
