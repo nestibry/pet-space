@@ -27,6 +27,7 @@ if (queryDistance !== "") { queryString += `&distance=${queryDistance}`; }
 
 
 // Handshake with Petfinder API
+function searchPetfinderAPI(){
 fetch("https://api.petfinder.com/v2/oauth2/token", {
   body: JSON.stringify({
     grant_type: "client_credentials",
@@ -46,6 +47,7 @@ fetch("https://api.petfinder.com/v2/oauth2/token", {
     fetchAnimals();
   })
   .catch(error => console.error(error));
+}
 
 
 function fetchAnimals() {
@@ -170,5 +172,7 @@ petFinderFormEl.on("submit", function(event){
     if (queryLocation !== "") { queryString += `&location=${queryLocation}&distance=${queryDistance}`; }
     
     console.log(`Query String: ${queryString}`);
+
+
 
 });
