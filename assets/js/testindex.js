@@ -128,7 +128,11 @@ function renderAnimalData() {
     // animalDistanceEl.addClass("col-md-8");
 
     var animalUrlEl = $('<li>');
-    animalUrlEl.text(animalData.animals[i].url);
+    var urlLinkEl = $('<a>');
+    urlLinkEl.attr('href', animalData.animals[i].url);
+    urlLinkEl.text("Link to Animal in Petfinder");
+    animalUrlEl.append(urlLinkEl);
+    // animalUrlEl.text(animalData.animals[i].url);
     // animalUrlEl.addClass("col-md-8");
 
 
