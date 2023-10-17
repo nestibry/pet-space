@@ -123,8 +123,8 @@ function renderAnimalData() {
     animalSizeEl.text(animalData.animals[i].size);
     // animalSizeEl.addClass("col-md-8");
 
-    var animalDistanceEl = $('<li>');
-    animalDistanceEl.text(animalData.animals[i].contact.distance);
+    // var animalDistanceEl = $('<li>');
+    // animalDistanceEl.text(animalData.animals[i].contact.distance);
     // animalDistanceEl.addClass("col-md-8");
 
     var animalUrlEl = $('<li>');
@@ -137,7 +137,7 @@ function renderAnimalData() {
     cardBodyEl.append(cardTextEl);
     cardBodyEl.append(animalAgeEl);
     cardBodyEl.append(animalSizeEl);
-    cardBodyEl.append(animalDistanceEl);
+    // cardBodyEl.append(animalDistanceEl);
     cardBodyEl.append(animalUrlEl);
     animalBioEl.append(cardBodyEl);
 
@@ -176,6 +176,7 @@ petFinderFormEl.on("submit", function(event){
 
     console.log(`Query String: ${queryString}`);
 
+    searchPetfinderAPI();
 
 
 });
