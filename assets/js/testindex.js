@@ -165,9 +165,10 @@ petFinderFormEl.on("submit", function(event){
     var queryDistance = $('#animal-distance-input').val();
 
     queryString = `type=${queryType}&age=${queryAge}&size=${querySize}`;
-
-    if (queryLocation !== "") { queryString += `&location=${queryLocation}`; }
-    if (queryDistance !== "") { queryString += `&distance=${queryDistance}`; }
-    console.log(`Query String: ${queryString}`);
     
+    // If Location is entered, combine the location and distance selected to query
+    if (queryLocation !== "") { queryString += `&location=${queryLocation}&distance=${queryDistance}`; }
+    
+    console.log(`Query String: ${queryString}`);
+
 });
