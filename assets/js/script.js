@@ -91,6 +91,7 @@ function fetchAnimals() {
 
         renderAnimalData();
         saveToLocalStorage(); // saves the query string to local storage
+        renderSavedSearches(); // re-render the saved search options
 
     })
     .catch(error => console.error(error));
