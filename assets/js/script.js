@@ -1,8 +1,72 @@
 // Global Variables
 var bearerToken = "";
 var queryString = "";
+var storeString = "";
+var savedSearches = [];
 var animalData = [];
 var petFinderFormEl = $('#pet-finder-form');
+var dropdownMenuEl = $(".dropdown-menu");
+
+
+// New Technology => Popper => https://popper.js.org/
+// Needed to add style.css...so doesn't really work as advertised
+const popcorn = $('#popcorn');
+const tooltip = $('#tooltip');
+
+Popper.createPopper(popcorn, tooltip, {
+    placement: 'left',
+});
+
+
+
+
+// Local Storage Functions and Render Saved Searches
+function readFromLocalStorage() {  
+    savedSearches = JSON.parse(localStorage.getItem('petspace-saved-searches')) || [];
+}
+
+function saveToLocalStorage() {
+    readFromLocalStorage();
+    
+    // new search string
+    var newItem = {
+        displayStr: storeString,
+        queryStr: queryString,
+    }
+
+    // Compare to existing and only add new unique searches
+    var isNewSearch = (savedSearches.filter(savedSearches => savedSearches.queryStr == newItem.queryStr).length === 0);
+    if(isNewSearch){
+        savedSearches.push(newItem);
+        localStorage.setItem('petspace-saved-searches', JSON.stringify(savedSearches)); 
+    } else {
+        console.log("Not a new search parameters...");
+    }
+}
+readFromLocalStorage();
+
+function renderSavedSearches() {
+
+    // Read the saved searches from localStorage => "savedSearches" global variable
+    readFromLocalStorage();
+
+    // Clear the Dropdown Menu
+    dropdownMenuEl.empty();
+
+    // Iterates over all the savedSearches to add to the dropdown menu
+    for(var i = 0; i < savedSearches.length; i++){
+        var listEl = $('<li>');
+        var anchorEl = $('<a>');
+        anchorEl.addClass('dropdown-item');
+        anchorEl.attr('href', '#');
+        anchorEl.attr('data-query-str', savedSearches[i].queryStr);
+        anchorEl.text(savedSearches[i].displayStr);
+        listEl.append(anchorEl);
+        dropdownMenuEl.append(listEl);
+    }
+}
+renderSavedSearches();
+
 
 
 
@@ -19,17 +83,17 @@ function searchPetfinderAPI() {
             "Content-type": "application/json; charset=UTF-8"
         }
     })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            bearerToken = data.access_token;
-            console.log(bearerToken);
-            fetchAnimals();
-        })
-        .catch(error => {
-            console.error(error);
-            alert("Error connecting to Petfinder API. Please try your search again.");
-        });
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        bearerToken = data.access_token;
+        console.log(bearerToken);
+        fetchAnimals();
+    })
+    .catch(error => {
+        console.error(error);
+        alert("Error connecting to Petfinder API. Please try your search again.");
+    });
 }
 
 
@@ -46,6 +110,8 @@ function fetchAnimals() {
         animalData = data;
 
         renderAnimalData();
+        saveToLocalStorage(); // saves the query string to local storage
+        renderSavedSearches(); // re-render the saved search options
 
     })
     .catch(error => console.error(error));
@@ -127,6 +193,7 @@ function renderAnimalData() {
 }
 
 
+
 petFinderFormEl.on("submit", function(event) {
 
     event.preventDefault();
@@ -141,16 +208,36 @@ petFinderFormEl.on("submit", function(event) {
     var queryDistance = $('#animal-distance-input').val();
 
     queryString = `type=${queryType}&age=${queryAge}&size=${querySize}`;
+    storeString = `${queryType}, ${queryAge}, ${querySize}`;
 
     // If Location is entered, combine the location and distance selected to query  
     // Making sure the user only enters a Postal Code of 5 digits in length
     if (!isNaN(parseInt($('#animal-location-input').val())) && ($('#animal-location-input').val().length == 5)) {
         queryString += `&location=${queryLocation}&distance=${queryDistance}`;
+        storeString += `, ${queryLocation}, ${queryDistance}`;
     }
 
     console.log(`Query String: ${queryString}`);
+    console.log(`Store String: ${storeString}`);
 
     searchPetfinderAPI();
 
+});
+
+var eventInput = "";
+
+dropdownMenuEl.on('click', '.dropdown-item', function(event){
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    // Get query string from the chosen dropdown-item
+    eventInput = $(this);
+    queryString = eventInput.attr('data-query-str');
+    storeString = eventInput.text();
+    console.log(`Query String: ${queryString}`);
+    console.log(`Store String: ${storeString}`);
+
+    searchPetfinderAPI();
 });
 
