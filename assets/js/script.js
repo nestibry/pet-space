@@ -54,9 +54,11 @@ function fetchAnimals() {
 // Recieved Animal Data from API, Displaying data on website
 function renderAnimalData() {
     var animalListEl = $(".animal-list");
+    var welcomeContainerEl = $(".welcome-container");
 
     // Clear out old elements
     animalListEl.empty()
+    welcomeContainerEl.empty();
     console.log("made it to render animal data");
 
     // Creating each animal card
