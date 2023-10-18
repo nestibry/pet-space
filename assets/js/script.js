@@ -3,8 +3,19 @@ var bearerToken = "";
 var queryString = "";
 var storeString = "";
 var animalData = [];
+var savedSearches = [];
 var petFinderFormEl = $('#pet-finder-form');
 
+// Local Storage
+function readFromLocalStorage() {  
+    savedSearches = JSON.parse(localStorage.getItem('petspace-saved-searches')) || [];
+}
+
+function saveToLocalStorage() {
+    localStorage.setItem('petspace-saved-searches', JSON.stringify(savedSearches)); 
+}
+readFromLocalStorage();
+saveToLocalStorage();
 
 
 // Get Bearer Token from Petfinder API then fetchAnimals()
@@ -142,14 +153,17 @@ petFinderFormEl.on("submit", function(event) {
     var queryDistance = $('#animal-distance-input').val();
 
     queryString = `type=${queryType}&age=${queryAge}&size=${querySize}`;
+    storeString = `${queryType}, ${queryAge}, ${querySize}`;
 
     // If Location is entered, combine the location and distance selected to query  
     // Making sure the user only enters a Postal Code of 5 digits in length
     if (!isNaN(parseInt($('#animal-location-input').val())) && ($('#animal-location-input').val().length == 5)) {
         queryString += `&location=${queryLocation}&distance=${queryDistance}`;
+        storeString += `, ${queryLocation}, ${queryDistance}`;
     }
 
     console.log(`Query String: ${queryString}`);
+    console.log(`Store String: ${storeString}`);
 
     searchPetfinderAPI();
 
