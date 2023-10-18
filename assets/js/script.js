@@ -27,12 +27,21 @@ function readFromLocalStorage() {
 
 function saveToLocalStorage() {
     readFromLocalStorage();
+    
+    // new search string
     var newItem = {
         displayStr: storeString,
         queryStr: queryString,
     }
-    savedSearches.push(newItem);
-    localStorage.setItem('petspace-saved-searches', JSON.stringify(savedSearches)); 
+
+    // Compare to existing and only add new unique searches
+    var isNewSearch = (savedSearches.filter(savedSearches => savedSearches.queryStr == newItem.queryStr).length === 0);
+    if(isNewSearch){
+        savedSearches.push(newItem);
+        localStorage.setItem('petspace-saved-searches', JSON.stringify(savedSearches)); 
+    } else {
+        console.log("Not a new search parameters...");
+    }
 }
 readFromLocalStorage();
 
