@@ -9,6 +9,7 @@ var dropdownMenuEl = $(".dropdown-menu");
 
 
 // New Technology => Popper => https://popper.js.org/
+// Needed to add style.css...so doesn't really work as advertised
 const popcorn = $('#popcorn');
 const tooltip = $('#tooltip');
 
