@@ -2,8 +2,8 @@
 var bearerToken = "";
 var queryString = "";
 var storeString = "";
-var animalData = [];
 var savedSearches = [];
+var animalData = [];
 var petFinderFormEl = $('#pet-finder-form');
 
 // Local Storage
@@ -12,10 +12,12 @@ function readFromLocalStorage() {
 }
 
 function saveToLocalStorage() {
+    readFromLocalStorage();
+    savedSearches.push(storeString);
     localStorage.setItem('petspace-saved-searches', JSON.stringify(savedSearches)); 
 }
 readFromLocalStorage();
-saveToLocalStorage();
+// saveToLocalStorage();
 
 
 // Get Bearer Token from Petfinder API then fetchAnimals()
@@ -58,6 +60,7 @@ function fetchAnimals() {
         animalData = data;
 
         renderAnimalData();
+        saveToLocalStorage(); // saves the query string to local storage
 
     })
     .catch(error => console.error(error));
