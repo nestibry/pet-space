@@ -23,6 +23,8 @@ function saveToLocalStorage() {
 readFromLocalStorage();
 
 
+
+
 // Get Bearer Token from Petfinder API then fetchAnimals()
 function searchPetfinderAPI() {
     fetch("https://api.petfinder.com/v2/oauth2/token", {
