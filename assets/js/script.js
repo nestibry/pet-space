@@ -13,11 +13,14 @@ function readFromLocalStorage() {
 
 function saveToLocalStorage() {
     readFromLocalStorage();
-    savedSearches.push(storeString);
+    var newItem = {
+        displayStr: storeString,
+        queryStr: queryString,
+    }
+    savedSearches.push(newItem);
     localStorage.setItem('petspace-saved-searches', JSON.stringify(savedSearches)); 
 }
 readFromLocalStorage();
-// saveToLocalStorage();
 
 
 // Get Bearer Token from Petfinder API then fetchAnimals()
