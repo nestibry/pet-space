@@ -8,6 +8,16 @@ var petFinderFormEl = $('#pet-finder-form');
 var dropdownMenuEl = $(".dropdown-menu");
 
 
+// New Technology => Popper => https://popper.js.org/
+// import { createPopper } from '@popperjs/core';
+// const popcorn = document.querySelector('#popcorn');
+// const tooltip = document.querySelector('#tooltip');
+// createPopper(popcorn, tooltip, {
+//   placement: 'bottom',
+// });
+
+
+
 
 // Local Storage Functions and Render Saved Searches
 function readFromLocalStorage() {  
