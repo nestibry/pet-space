@@ -5,14 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pet Space - Animal Finder</title>
-    <link 
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
-        rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
-        crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Catamaran:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Catamaran:wght@300&display=swap"
+        rel="stylesheet">
     <style>
         body {
             background-image: url("./assets/images/background.png");
@@ -57,58 +55,82 @@
 
         <!-- Welcome Container  -->
         <div class="welcome-container">
-            <marquee  behavior="alternate" direction="left">           
-                <img style="width:250px;" 
-                    src= "./assets/images/Screenshot 2023-10-17 at 2.06.35 PM.png"
-                    alt="spacekitty">  
-            </marquee> 
-            <div class="card row justify-content-center mx-auto" 
+            <marquee behavior="alternate" direction="left">
+                <img style="width:250px;" src="./assets/images/Screenshot 2023-10-17 at 2.06.35 PM.png"
+                    alt="spacekitty">
+            </marquee>
+            <div class="card row justify-content-center mx-auto"
                 style="max-width: 750px; background: radial-gradient(circle, rgba(184,4,176,1) 9%, rgba(140,54,172,1) 22%, rgba(116,81,170,1) 34%, rgba(74,128,167,1) 60%, rgba(26,183,163,1) 74%, rgba(4,116,184,1) 85%, rgba(4,51,79,1) 94%);font-family: audiowide; font-size: 20px;">
                 <div class="row d-flex justify-content-center g-0">
                     <div class="col-md-4">
-                        <img class="img-fluid rounded-start"
-                            style="width: 100%; height: 100%" 
-                            src="./assets/images/dogcatspace.jpeg"
-                            alt="The universe consists of all cats and dogs.">
+                        <img class="img-fluid rounded-start" style="width: 100%; height: 100%"
+                            src="./assets/images/dogcatspace.jpeg" alt="The universe consists of all cats and dogs.">
                     </div>
-                  <div class="col-md-8">
+                    <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title" style="font-size: 70px;">Welcome to Pet Space</h5>
                             <p class="card-text">One small step for a PET,</p>
                             <p class="card-text">One giant leap for PETKIND!</p>
                             <a href="#" class="btn btn-info">Search for your star pet now!</a>
                         </div>
-                  </div>
+                    </div>
                 </div>
             </div>
-            <marquee  behavior="alternate" direction="right">          
-                <img style="width:250px;" 
-                    src= "./assets/images/spacedog.jpeg" 
-                    alt="spacedog">  
-            </marquee>  
+            <marquee behavior="alternate" direction="right">
+                <img style="width:250px;" src="./assets/images/spacedog.jpeg" alt="spacedog">
+            </marquee>
         </div>
+
+        <!-- Animal List Container  -->
+        <section class="d-flex min-vh-100 animal-section">
+
+            <div class="hide container my-auto animal-list"
+                style="font-family: catamaran; background: radial-gradient(circle, rgba(184,4,176,1) 9%, rgba(140,54,172,1) 22%, rgba(116,81,170,1) 34%, rgba(74,128,167,1) 60%, rgba(26,183,163,1) 74%, rgba(4,116,184,1) 85%, rgba(4,51,79,1) 94%);flex: block ; object-fit: cover; max-width: 750px; ">
+
+                <!-- Animal Card Template-->
+                <div class="card row justify-content-center mx-auto animal-card">
+                    <div class="row d-flex justify-content-center g-0">
+                        <div class="col-md-4">
+                            <img src="./assets/images/photocomingsoon.png" class="img-fluid rounded-start" alt="..." />
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">.animals[i].name</h5>
+                                <p class="card-text">.animals[i].description</p>
+                                <li>.animals[i].age</li>
+                                <li>.animals[i].size</li>
+
+                                <li>.animals[i].distance</li>
+                                <li>.animals[i].url</li>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
 
     </main>
 
     <!-- ABout Us Footer links to aboutus/contactus html page  -->
     <footer class="footer-class row align-items-center p-2 text-decoration-none"
-            style="font-family: audiowide; color: #04334f; background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(202,45,253,1) 100%)" >
-        <div class="about-us row align-items-center text-decoration-none font-style-end"> 
-            
-            <a class="nav-link" 
-                onmouseover="this.style.backgroundColor='#8347fa'"
-                onmouseout="this.style.backgroundColor=''" 
-                href="#">
+        style="font-family: audiowide; color: #04334f; background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(202,45,253,1) 100%)">
+        <div class="about-us row align-items-center text-decoration-none font-style-end">
+
+            <a class="nav-link" onmouseover="this.style.backgroundColor='#8347fa'"
+                onmouseout="this.style.backgroundColor=''" href="#">
                 About Us
             </a>
             <style>
                 .footer-class {
-                text-align: center;
-                font-size: 30px
+                    text-align: center;
+                    font-size: 30px
                 }
+
                 .about-us {
-                font-size: 30px;
-                text-decoration: none;
+                    font-size: 30px;
+                    text-decoration: none;
                 }
             </style>
         </div>
@@ -117,17 +139,15 @@
 
 
     <!-- Find your "Fur-ever" Friend! Modal -->
-    <div class="modal fade" 
-        id="pet-finder-modal" 
-        tabindex="-1" 
-        aria-labelledby="pet-finder-modal-label"
+    <div class="modal fade" id="pet-finder-modal" tabindex="-1" aria-labelledby="pet-finder-modal-label"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form id="pet-finder-form">
                     <div class="modal-header custom-modal-header">
                         <h5 class="modal-title" id="search-animal-modal-label">Find Your "Fur-ever" Friend</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
@@ -185,11 +205,9 @@
 
 
 
-    <script 
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" 
-        crossorigin="anonymous">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+        </script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
