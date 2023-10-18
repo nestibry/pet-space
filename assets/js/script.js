@@ -204,3 +204,20 @@ petFinderFormEl.on("submit", function(event) {
 
 });
 
+var eventInput = "";
+
+dropdownMenuEl.on('click', '.dropdown-item', function(event){
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    // Get query string from the chosen dropdown-item
+    eventInput = $(this);
+    queryString = eventInput.attr('data-query-str');
+    storeString = eventInput.text();
+    console.log(`Query String: ${queryString}`);
+    console.log(`Store String: ${storeString}`);
+
+    searchPetfinderAPI();
+});
+
