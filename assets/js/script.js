@@ -6,7 +6,7 @@ var savedSearches = [];
 var animalData = [];
 var petFinderFormEl = $('#pet-finder-form');
 
-// Local Storage
+// Local Storage Functions
 function readFromLocalStorage() {  
     savedSearches = JSON.parse(localStorage.getItem('petspace-saved-searches')) || [];
 }
@@ -36,17 +36,17 @@ function searchPetfinderAPI() {
             "Content-type": "application/json; charset=UTF-8"
         }
     })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            bearerToken = data.access_token;
-            console.log(bearerToken);
-            fetchAnimals();
-        })
-        .catch(error => {
-            console.error(error);
-            alert("Error connecting to Petfinder API. Please try your search again.");
-        });
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        bearerToken = data.access_token;
+        console.log(bearerToken);
+        fetchAnimals();
+    })
+    .catch(error => {
+        console.error(error);
+        alert("Error connecting to Petfinder API. Please try your search again.");
+    });
 }
 
 
