@@ -5,6 +5,7 @@ var storeString = "";
 var savedSearches = [];
 var animalData = [];
 var petFinderFormEl = $('#pet-finder-form');
+var dropdownMenuEl = $(".dropdown-menu");
 
 
 
@@ -26,8 +27,23 @@ readFromLocalStorage();
 
 function renderSavedSearches() {
 
-    
+    // Read the saved searches from localStorage => "savedSearches" global variable
+    readFromLocalStorage();
 
+    // Clear the Dropdown Menu
+    dropdownMenuEl.empty();
+
+    // Iterates over all the savedSearches to add to the dropdown menu
+    for(var i = 0; i < savedSearches.length; i++){
+        var listEl = $('<li>');
+        var anchorEl = $('<a>');
+        anchorEl.addClass('dropdown-item');
+        anchorEl.attr('href', '#');
+        anchorEl.attr('data-query-str', savedSearches[i].queryStr);
+        anchorEl.text(savedSearches[i].displayStr);
+        listEl.append(anchorEl);
+        dropdownMenuEl.append(listEl);
+    }
 }
 renderSavedSearches();
 
