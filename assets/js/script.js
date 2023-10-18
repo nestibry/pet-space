@@ -41,22 +41,20 @@ function fetchAnimals() {
             "Content-Type": "application/json"
         }
     })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            animalData = data;
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        animalData = data;
 
+        renderAnimalData();
 
-            renderAnimalData();
-
-        })
-        .catch(error => console.error(error));
+    })
+    .catch(error => console.error(error));
 }
 
+// Recieved Animal Data from API, Displaying data on website
 function renderAnimalData() {
     var animalListEl = $(".animal-list");
-
-
 
     // Clear out old elements
     animalListEl.empty()
@@ -84,7 +82,6 @@ function renderAnimalData() {
             imgEl.attr('src', animalData.animals[i].photos[0].medium)
         }
 
-
         var animalBioEl = $('<div>');
         animalBioEl.addClass("col-md-8");
 
@@ -101,34 +98,23 @@ function renderAnimalData() {
 
         var animalAgeEl = $('<li>');
         animalAgeEl.text(animalData.animals[i].age);
-        // animalAgeEl.addClass("li");
 
         var animalSizeEl = $('<li>');
         animalSizeEl.text(animalData.animals[i].size);
-        // animalSizeEl.addClass("col-md-8");
-
-        // var animalDistanceEl = $('<li>');
-        // animalDistanceEl.text(animalData.animals[i].contact.distance);
-        // animalDistanceEl.addClass("col-md-8");
 
         var animalUrlEl = $('<li>');
         var urlLinkEl = $('<a>');
         urlLinkEl.attr('href', animalData.animals[i].url);
         urlLinkEl.text("Link to Animal in Petfinder");
         animalUrlEl.append(urlLinkEl);
-        // animalUrlEl.text(animalData.animals[i].url);
-        // animalUrlEl.addClass("col-md-8");
-
 
         //Append everything togther
         cardBodyEl.append(cardTitleEl);
         cardBodyEl.append(cardTextEl);
         cardBodyEl.append(animalAgeEl);
         cardBodyEl.append(animalSizeEl);
-        // cardBodyEl.append(animalDistanceEl);
         cardBodyEl.append(animalUrlEl);
         animalBioEl.append(cardBodyEl);
-
 
         imgSection.append(imgEl);
 
