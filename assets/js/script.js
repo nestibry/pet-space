@@ -14,14 +14,6 @@ const tooltip = $('#tooltip');
 
 Popper.createPopper(popcorn, tooltip, {
     placement: 'left',
-    modifiers: [
-        {
-          name: 'offset',
-          options: {
-            offset: [0, 8],
-          },
-        },
-      ],
 });
 
 
