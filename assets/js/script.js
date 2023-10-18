@@ -1,6 +1,7 @@
 // Global Variables
 var bearerToken = "";
 var queryString = "";
+var storeString = "";
 var animalData = [];
 var petFinderFormEl = $('#pet-finder-form');
 
