@@ -6,7 +6,9 @@ var savedSearches = [];
 var animalData = [];
 var petFinderFormEl = $('#pet-finder-form');
 
-// Local Storage Functions
+
+
+// Local Storage Functions and Render Saved Searches
 function readFromLocalStorage() {  
     savedSearches = JSON.parse(localStorage.getItem('petspace-saved-searches')) || [];
 }
@@ -21,6 +23,13 @@ function saveToLocalStorage() {
     localStorage.setItem('petspace-saved-searches', JSON.stringify(savedSearches)); 
 }
 readFromLocalStorage();
+
+function renderSavedSearches() {
+
+    
+
+}
+renderSavedSearches();
 
 
 
@@ -145,6 +154,7 @@ function renderAnimalData() {
         animalListEl.append(animalCardEl);
     }
 }
+
 
 
 petFinderFormEl.on("submit", function(event) {
