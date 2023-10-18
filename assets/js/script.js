@@ -2,8 +2,7 @@
 var bearerToken = "";
 var queryString = "";
 var animalData = [];
-
-// var petFinderFormEl = $('#pet-finder-form');
+var petFinderFormEl = $('#pet-finder-form');
 
 
 
@@ -125,9 +124,8 @@ function renderAnimalData() {
     }
 }
 
-var petFinderFormEl = $('#pet-finder-form');
 
-petFinderFormEl.on("submit", function (event) {
+petFinderFormEl.on("submit", function(event) {
 
     event.preventDefault();
     event.stopPropagation();
@@ -143,7 +141,7 @@ petFinderFormEl.on("submit", function (event) {
     queryString = `type=${queryType}&age=${queryAge}&size=${querySize}`;
 
     // If Location is entered, combine the location and distance selected to query  
-    // Making sure the user only enter a Postal Code of lenghth 5 digits
+    // Making sure the user only enters a Postal Code of 5 digits in length
     if (!isNaN(parseInt($('#animal-location-input').val())) && ($('#animal-location-input').val().length == 5)) {
         queryString += `&location=${queryLocation}&distance=${queryDistance}`;
     }
@@ -151,7 +149,6 @@ petFinderFormEl.on("submit", function (event) {
     console.log(`Query String: ${queryString}`);
 
     searchPetfinderAPI();
-
 
 });
 
