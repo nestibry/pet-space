@@ -35,14 +35,7 @@ THEN I am able to fill out a form to inquire about my pet match.
 
 
 ## Roadmap
-There are many different direcetions Pet Space can go to evolve and expand its user interface. 
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+There are many different direcetions Pet Space can go to evolve and expand its ease of user interface. A link between the contact form to an actual user on the receiving end for more easeability. 
 
 ## Authors and acknowledgment
 Thanks so much for the help of the creators of Bryan Nestigen, Veronica Perez, Shahan Ameen and Holly Thompson.
