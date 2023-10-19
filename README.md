@@ -33,7 +33,9 @@ THEN I am able to fill out a form to inquire about my pet match.
 
 ## Visuals
 
-![screenshot](./assets/images/readmeimage.png)
+![Default Screen Example](./assets/images/readmeimage.png)
+
+![Saved Searches Example](./assets/images/saved-searches-example.png)
 
 ## Files
 
