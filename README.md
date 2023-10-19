@@ -29,13 +29,7 @@ WHEN I find the best match,
 THEN I am able to fill out a form to inquire about my pet match.
 ```
 
-Create a wire frame of html, js- align to the data.
-Create a sample template of the layout of the browser- where to put info where, form, input, how to display pet that generate
-Create a photo layout, swipe option- connect PhotoSwipe api
--Inquiry form data- go to dummy email
-Create local storage to save pets of interest
-Learn bootstrap, utilize "popper bundle"
-Create html for about us and contact us to open new page 
+
 
 
 
