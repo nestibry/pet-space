@@ -27,15 +27,25 @@ THEN I am able to save them.
 
 WHEN I find the best match,
 THEN I am able to fill out a form to inquire about my pet match.
-```
 
-Create a wire frame of html, js- align to the data.
-Create a sample template of the layout of the browser- where to put info where, form, input, how to display pet that generate
-Create a photo layout, swipe option- connect PhotoSwipe api
--Inquiry form data- go to dummy email
-Create local storage to save pets of interest
-Learn bootstrap, utilize "popper bundle"
-Create html for about us and contact us to open new page 
+```
+##Visuals
+
+![screenshot](assets/images/readmeimage.png)
+
+
+## Roadmap
+There are many different direcetions Pet Space can go to evolve and expand its ease of user interface. A link between the contact form to an actual user on the receiving end for more easeability. 
+
+## Authors and acknowledgment
+Thanks so much for the help of the creators of Bryan Nestigen, Veronica Perez, Shahan Ameen and Holly Thompson.
+
+## License
+MIT License
+
+Copyright (c) 2023 nestibry
+
+
 
 
 
